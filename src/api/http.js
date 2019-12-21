@@ -1,12 +1,14 @@
 // 配置请求
 // HOSTNAME  token  loading 响应处理
-import {HOSTNAME} from "../config/base";
+import {
+    HOSTNAME
+} from "../config/base";
 import axios from "axios";
 let token = '';
 
 
 // 获取cookie
-function  getCookie(name) {
+function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
         var cookies = document.cookie.split(';');
@@ -22,14 +24,19 @@ function  getCookie(name) {
     return cookieValue;
 }
 getToken()
+
 function getToken() {
     token = getCookie('token');
 }
 const instance = axios.create({
     baseURL: HOSTNAME,
-    timeout:10000,
-    headers: {'Authorization': 'Bearer ' + token},
+    timeout: 10000,
+    headers: {
+        'Authorization': 'Bearer ' + token,
+
+    },
 });
+
 
 instance.interceptors.request.use(function (config) {
     return config;

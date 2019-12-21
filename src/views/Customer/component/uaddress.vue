@@ -151,7 +151,7 @@
             },
         },
         beforeMount() {
-            this.getdatelist()
+            // this.getdatelist()
         },
         watch:{
             'myid':function (val) {

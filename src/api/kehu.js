@@ -24,36 +24,76 @@ let kehu = {
     UCustomerCustomerContacts,
     DCustomerCustomerContacts,
     GCustomerCustomerContacts,
+    customerToPond,
+    retrieve,
+    retrieveCol,
+    ACustomerListShareToPeople,
+    GStaffListByDepartId
+
 }
+// 查询当前员工的同部门同事
+function GStaffListByDepartId(data) {
+    return instance.get('Customer/GStaffListByDepartId', {
+        params: data
+    })
+}
+
+
+// 多个客户分享多个员工
+function ACustomerListShareToPeople(data) {
+    return instance.post('Customer/ACustomerListShareToPeople', data)
+}
+
+
+// 根据客户名或手机号进行检索
+function retrieve(data) {
+    return instance.get('Customer/GCustomerByNameOrPhone', {
+        params: data
+    })
+}
+// 根据同事名或手机号进行检索
+function retrieveCol(data) {
+    return instance.get('Customer/GPeopleListByName', {
+        params: data
+    })
+}
+
+
+// 客户资源接手操作
+function customerToPond(data) {
+    return instance.post('Customer/UCustomerToPond', data)
+}
+
+
 // 添加客户联系信息
 function ACustomerCustomerContacts(data) {
-    return instance.post('Customer/ACustomerCustomerContacts',data)
+    return instance.post('Customer/ACustomerCustomerContacts', data)
 
 }
 // 修改客户联系信息
 function UCustomerCustomerContacts(data) {
-    return instance.post('Customer/UCustomerCustomerContacts',data)
+    return instance.post('Customer/UCustomerCustomerContacts', data)
 
-}// 删除客户联系信息
+} // 删除客户联系信息
 function DCustomerCustomerContacts(data) {
-    return instance.post('Customer/DCustomerCustomerContacts',data)
+    return instance.post('Customer/DCustomerCustomerContacts', data)
 
 }
 
 // 获取客户联系信息
 function GCustomerCustomerContacts(data) {
-    return instance.get('Customer/GCustomerCustomerContacts',{
-        params:data
+    return instance.get('Customer/GCustomerCustomerContacts', {
+        params: data
     })
 }
 
 
 // 获取商户信息
 function GCustomerCommerce(data) {
-    return instance.get('Customer/GCustomerCommerce',{
-        params:data
+    return instance.get('Customer/GCustomerCommerce', {
+        params: data
     })
-    
+
 }
 
 //添加或修改商户信息
@@ -82,7 +122,7 @@ function UCustomerVisit(data) {
 
 //删除改客户回访记录
 function DCustomerVisit(data) {
-    return instance.post('Customer/DCustomerVisit',data)
+    return instance.post('Customer/DCustomerVisit', data)
 }
 
 // 获取客户回访记录
@@ -167,4 +207,6 @@ function daddress(data) {
 }
 
 
-export {kehu}
+export {
+    kehu
+}
